@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "88458f03-266d-4f6a-9a67-58c7bd1de73d",
+		"name": "cam-sb-process-invoice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Post Invoice to Web Service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"customerName\": \"foo\",\n    \"customerId\": \"1234asdf\",\n    \"items\": [\n        {\n            \"name\": \"hammer\",\n            \"description\": \"some hammer\",\n            \"quantity\": 1,\n            \"costPerItem\": 12.49\n        },\n        {\n            \"name\": \"nails\",\n            \"description\": \"some fence nails\",\n            \"quantity\": 10,\n            \"costPerItem\": 0.1\n        },\n        {\n            \"name\": \"wood\",\n            \"description\": \"fence posts\",\n            \"quantity\": 20,\n            \"costPerItem\": 15.99\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/handleInvoice",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"handleInvoice"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correlate Invoice Event Msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\": \"InvoiceEventMsg\",\n    \"businessKey\": \"bk-1580422378743\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correlate Customer Acct Event Msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\": \"custAcctMsg\",\n    \"businessKey\": \"bk-1580422378743\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Correlate Payment Event Msg",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"messageName\": \"paymentMsg\",\n    \"businessKey\": \"bk-1580422378743\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/message",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"message"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
