@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Definitions_1h5o9nd" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="3.6.0">
   <bpmn:process id="process-invoice" name="Process Invoice" isExecutable="true">
-    <bpmn:startEvent id="StartEvent_0rjgphe" name="Onboarding begins">
+    <bpmn:startEvent id="StartEvent_0rjgphe" name="Invoice Received">
       <bpmn:outgoing>SequenceFlow_0gqjdvi</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:parallelGateway id="ParallelGateway_14p4eny">
@@ -59,7 +59,7 @@
     <bpmn:sequenceFlow id="SequenceFlow_1ujywi6" sourceRef="IntermediateCatchEvent_12pwreq" targetRef="ParallelGateway_1j4k7wh" />
     <bpmn:sequenceFlow id="SequenceFlow_03798wj" sourceRef="IntermediateCatchEvent_025pgk5" targetRef="ParallelGateway_1j4k7wh" />
     <bpmn:sequenceFlow id="SequenceFlow_13m3p8e" sourceRef="IntermediateCatchEvent_0f6bniw" targetRef="ParallelGateway_1j4k7wh" />
-    <bpmn:endEvent id="EndEvent_1clj3o8" name="Send Onboarding Completion Event">
+    <bpmn:endEvent id="EndEvent_1clj3o8" name="Invoice Processed">
       <bpmn:incoming>SequenceFlow_16z1i6d</bpmn:incoming>
       <bpmn:messageEventDefinition id="MessageEventDefinition_026hsyq" messageRef="Message_0jsi4jz" camunda:delegateExpression="#{logger}" />
     </bpmn:endEvent>
@@ -85,7 +85,7 @@
       <bpmndi:BPMNShape id="StartEvent_0rjgphe_di" bpmnElement="StartEvent_0rjgphe">
         <dc:Bounds x="152" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="141" y="145" width="58" height="27" />
+          <dc:Bounds x="128" y="145" width="85" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ParallelGateway_14p4eny_di" bpmnElement="ParallelGateway_14p4eny">
@@ -183,7 +183,7 @@
       <bpmndi:BPMNShape id="EndEvent_0rb6rxa_di" bpmnElement="EndEvent_1clj3o8">
         <dc:Bounds x="1052" y="102" width="36" height="36" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1027" y="145" width="87" height="27" />
+          <dc:Bounds x="1045" y="145" width="52" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="ServiceTask_1hgtzvr_di" bpmnElement="Task_19o968y">
